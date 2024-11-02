@@ -10,9 +10,6 @@ COPY package*.json ./
 # Instale as dependências
 RUN npm install
 
-# Install NestJS CLI globally
-RUN npm install -g @nestjs/cli
-
 # Copie o restante do código da aplicação
 COPY . .
 
