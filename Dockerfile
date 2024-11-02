@@ -1,23 +1,26 @@
-# Use a imagem oficial do Node.js
-FROM node:18
+# Use the official Node.js image
+FROM node:16
 
-# Crie e defina o diretório de trabalho
+# Set the working directory
 WORKDIR /usr/src/app
 
-# Copie os arquivos do package.json e package-lock.json
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Instale as dependências
+# Install dependencies
 RUN npm install
 
-# Copie o restante do código da aplicação
+# Install NestJS CLI globally
+RUN npm install -g @nestjs/cli
+
+# Copy the rest of the application code
 COPY . .
 
-# Compile o código TypeScript
+# Build the application
 RUN npm run build
 
-# Exponha a porta que sua aplicação usa
+# Expose the application port
 EXPOSE 3000
 
-# Comando para iniciar a aplicação
-CMD ["npm", "run", "start:prod"]
+# Command to run the application
+CMD ["node", "dist/main.js"]
