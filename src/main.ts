@@ -42,5 +42,5 @@ async function bootstrap() {
   }).listen(80, () => {
     console.log('HTTP Server running on port 80 and redirecting to HTTPS');
   });
-
+}
 bootstrap();
