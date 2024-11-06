@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { WalletService } from '../services/wallet.service';
 
@@ -10,5 +10,10 @@ export class WalletController {
   @Get('/:userId')
   async findUserWallet(@Param('userId') userId: string) {
     return await this.walletService.findWalletsByUser(userId);
+  }
+
+  @Post('/')
+  async addBalance(@Body() body: any) {
+    return await this.walletService.addBalance(body);
   }
 }
