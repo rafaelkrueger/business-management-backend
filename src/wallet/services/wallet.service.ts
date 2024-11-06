@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 import { Wallet } from '../entities/wallet.entity';
 import { WalletTransaction } from '../entities/wallet-transaction.entity';
 import { Enterprise } from 'src/enterprise/entities/enterprise.entity';
-import * as Big from 'big.js';
+// import * as Big from 'big.js';
 @Injectable()
 export class WalletService {
   constructor(
@@ -52,16 +52,16 @@ export class WalletService {
       throw new Error('Wallet not found');
     }
 
-    const updatedBalance = Big(wallet.balance).plus(Big(body.amount));
-    wallet.balance = parseFloat(updatedBalance.toFixed(8));
+    // const updatedBalance = Big(wallet.balance).plus(Big(body.amount));
+    // wallet.balance = parseFloat(updatedBalance.toFixed(8));
     await this.walletRepository.save(wallet);
 
-    let historicAmount = Big(body.amount);
-    historicAmount = parseFloat(historicAmount.toFixed(8));
+    // let historicAmount = Big(body.amount);
+    // historicAmount = parseFloat(historicAmount.toFixed(8));
 
     const transaction = new WalletTransaction();
     transaction.walletId = wallet.id;
-    transaction.amount = historicAmount;
+    // transaction.amount = historicAmount;
     transaction.description = `Valor adicionado a carteira ${wallet.name}`;
     transaction.transactionDate = new Date();
     await this.walletTransactionRepository.save(transaction);
