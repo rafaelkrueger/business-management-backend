@@ -33,6 +33,7 @@ export class ProductService {
   }
 
   async create(body: any) {
+    console.log(body.formData.images);
     // Processar URL das files;
     const product = new Product();
     product.name = body.formData.name;
@@ -47,7 +48,7 @@ export class ProductService {
     product.company = body.activeCompany;
     product.status = body.formData.status;
     // product.images = body.formData.images;
-    await this.productRepository.save(product);
+    // await this.productRepository.save(product);
   }
 
   async edit(body: any) {

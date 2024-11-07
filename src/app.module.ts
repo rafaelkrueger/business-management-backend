@@ -17,6 +17,9 @@ import { Wallet } from './wallet/entities/wallet.entity';
 import { WalletTransaction } from './wallet/entities/wallet-transaction.entity';
 import { PaymentModule } from './payment/payment.module';
 import { Payment } from './payment/entities/payment.entity';
+import { DashboardModules } from './config/entities/modules.entity';
+import { EnterpriseModules } from './config/entities/enterpriseModules.entity';
+import { ConfigurationModule } from './config/configuration.module';
 
 @Module({
   imports: [
@@ -37,7 +40,9 @@ import { Payment } from './payment/entities/payment.entity';
         Product,
         Wallet,
         WalletTransaction,
-        Payment
+        Payment,
+        DashboardModules,
+        EnterpriseModules,
       ],
       synchronize: true,
     }),
@@ -47,7 +52,8 @@ import { Payment } from './payment/entities/payment.entity';
     CalendarModule,
     ProductModule,
     WalletModule,
-    PaymentModule
+    PaymentModule,
+    ConfigurationModule,
   ],
   controllers: [],
   providers: [],
